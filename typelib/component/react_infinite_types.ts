@@ -1,31 +1,32 @@
-import type React from 'react';
+import React from 'react';
+import InfiniteComputer from '../../src/computers/infiniteComputer';
 
-type PreloadType = number | {|
+export type PreloadType = {
   type: string,
   amount: number
-|};
-type ElementHeight = number | Array<number>;
+};
+export type ElementHeight = number | Array<number>;
 
-type CSSStyle = {[key: string]: string | number};
+export type CSSStyle = { [key: string]: string | number };
 
-type ReactInfiniteUtilityFunctions = {
+export type ReactInfiniteUtilityFunctions = {
   getLoadingSpinnerHeight: () => number,
   subscribeToScrollListener: () => void,
   unsubscribeFromScrollListener: () => void,
-  nodeScrollListener: (e: SyntheticEvent) => void,
+  nodeScrollListener: (e: any) => void,
   getScrollTop: () => number,
   setScrollTop: (top: number) => void,
-  scrollShouldBeIgnored: (e: SyntheticEvent) => boolean,
+  scrollShouldBeIgnored: (e: any) => boolean,
   buildScrollableStyle: () => CSSStyle
 };
 
-type ReactInfiniteProvidedDefaultProps = {
+export type ReactInfiniteProvidedDefaultProps = {
   handleScroll: () => any,
 
   useWindowAsScrollContainer: boolean,
 
   onInfiniteLoad: () => any,
-  loadingSpinnerDelegate: React.Element<any, any, any>,
+  loadingSpinnerDelegate: any,
 
   displayBottomUpwards: boolean,
 
@@ -39,7 +40,7 @@ type ReactInfiniteProvidedDefaultProps = {
   }
 }
 
-type ReactInfiniteProps = {
+export type ReactInfiniteProps = {
   children: any,
   handleScroll?: (event: any) => any,
 
@@ -49,12 +50,12 @@ type ReactInfiniteProps = {
   elementHeight: ElementHeight,
   containerHeight?: number,
   useWindowAsScrollContainer?: boolean,
-
+  useParentContainer?: boolean;
   displayBottomUpwards: boolean,
 
   infiniteLoadBeginEdgeOffset?: number,
   onInfiniteLoad?: () => any,
-  loadingSpinnerDelegate?: React.Element<any, any, any>,
+  loadingSpinnerDelegate?: any,
 
   isInfiniteLoading?: boolean,
   timeScrollStateLastsForAfterUserScrolls?: number,
@@ -66,7 +67,7 @@ type ReactInfiniteProps = {
   }
 };
 
-type ReactInfiniteComputedProps = {
+export type ReactInfiniteComputedProps = {
   children: any,
   handleScroll: (event: any) => any,
 
@@ -81,7 +82,7 @@ type ReactInfiniteComputedProps = {
 
   infiniteLoadBeginEdgeOffset?: number,
   onInfiniteLoad: () => any,
-  loadingSpinnerDelegate?: React.Element<*>,
+  loadingSpinnerDelegate?: any,
 
   isInfiniteLoading?: boolean,
   timeScrollStateLastsForAfterUserScrolls?: number,
@@ -92,7 +93,7 @@ type ReactInfiniteComputedProps = {
   }
 };
 
-type ReactInfiniteState = {
+export type ReactInfiniteState = {
   numberOfChildren: number,
   infiniteComputer: InfiniteComputer,
   isInfiniteLoading: boolean,

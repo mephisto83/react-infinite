@@ -5,11 +5,11 @@ var opts = {
   CLOSEST_HIGHER: 2
 };
 
-var binaryIndexSearch = function(
-  array /* : Array<number> */,
-  item /* : number */,
-  opt /* : number */
-) /* : ?number */ {
+var binaryIndexSearch = function (
+  array: number[] /* : Array<number> */,
+  item: number /* : number */,
+  opt: number /* : number */
+): number | undefined/* : ?number */ {
   var index;
 
   var high = array.length - 1,
@@ -39,7 +39,7 @@ var binaryIndexSearch = function(
   return index;
 };
 
-module.exports = {
+export default {
   binaryIndexSearch: binaryIndexSearch,
   opts: opts
 };

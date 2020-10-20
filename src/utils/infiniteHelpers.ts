@@ -1,10 +1,12 @@
 /* @flow */
 
-var ConstantInfiniteComputer = require('../computers/constantInfiniteComputer.js');
-var ArrayInfiniteComputer = require('../computers/arrayInfiniteComputer.js');
-var scaleEnum = require('./scaleEnum');
-var React = global.React || require('react');
-var window = require('./window');
+import ConstantInfiniteComputer from '../computers/constantInfiniteComputer';
+import ArrayInfiniteComputer from '../computers/arrayInfiniteComputer';
+import { CSSStyle, ElementHeight, ReactInfiniteComputedProps, ReactInfiniteProps } from '../../typelib/component/react_infinite_types';
+import scaleEnum from './scaleEnum';
+import React from 'react';
+import window from './window';
+import InfiniteComputer from '../computers/infiniteComputer';
 
 function createInfiniteComputer(
   data: ElementHeight,
@@ -43,7 +45,7 @@ function recomputeApertureStateFromOptionsAndScrollTop(
   displayIndexEnd: number
 } {
   var blockNumber =
-      preloadBatchSize === 0 ? 0 : Math.floor(scrollTop / preloadBatchSize),
+    preloadBatchSize === 0 ? 0 : Math.floor(scrollTop / preloadBatchSize),
     blockStart = preloadBatchSize * blockNumber,
     blockEnd = blockStart + preloadBatchSize,
     apertureTop = Math.max(0, blockStart - preloadAdditionalHeight),
@@ -62,6 +64,7 @@ function generateComputedProps(
   props: ReactInfiniteProps
 ): ReactInfiniteComputedProps {
   // These are extracted so their type definitions do not conflict.
+  let me: any = this as any;
   var {
     containerHeight,
     preloadBatchSize,
@@ -71,14 +74,20 @@ function generateComputedProps(
     ...oldProps
   } = props;
 
-  var newProps = {};
+  var newProps: any = {};
   containerHeight = typeof containerHeight === 'number' ? containerHeight : 0;
   newProps.containerHeight = props.useWindowAsScrollContainer
     ? window.innerHeight
     : containerHeight;
 
-  newProps.handleScroll = handleScroll || (() => {});
-  newProps.onInfiniteLoad = onInfiniteLoad || (() => {});
+  if (props.useParentContainer) {
+    if (me.scrollable && me.scrollable.parentElement) {
+      newProps.containerHeight = me.scrollable.parentElement.clientHeight;
+    }
+  }
+
+  newProps.handleScroll = handleScroll || (() => { });
+  newProps.onInfiniteLoad = onInfiniteLoad || (() => { });
 
   var defaultPreloadBatchSizeScaling = {
     type: scaleEnum.CONTAINER_HEIGHT_SCALE_FACTOR,
@@ -130,7 +139,7 @@ function buildHeightStyle(height: number): CSSStyle {
   };
 }
 
-module.exports = {
+export default {
   createInfiniteComputer,
   recomputeApertureStateFromOptionsAndScrollTop,
   generateComputedProps,

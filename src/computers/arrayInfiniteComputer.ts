@@ -1,14 +1,14 @@
 /* @flow */
 
-var InfiniteComputer = require('./infiniteComputer.js'),
-  bs = require('../utils/binaryIndexSearch.js');
+import InfiniteComputer from './infiniteComputer';
+import bs from '../utils/binaryIndexSearch';
 
-class ArrayInfiniteComputer extends InfiniteComputer {
+export default class ArrayInfiniteComputer extends InfiniteComputer {
   prefixHeightData: Array<number>;
 
-  constructor(heightData: Array<number>, numberOfChildren: number): void {
+  constructor(heightData: Array<number>, numberOfChildren: number) {
     super(heightData, numberOfChildren);
-    this.prefixHeightData = this.heightData.reduce((acc, next) => {
+    this.prefixHeightData = this.heightData.reduce((acc: any, next: any) => {
       if (acc.length === 0) {
         return [next];
       } else {
@@ -18,7 +18,7 @@ class ArrayInfiniteComputer extends InfiniteComputer {
     }, []);
   }
 
-  maybeIndexToIndex(index: ?number): number {
+  maybeIndexToIndex(index?: number): number {
     if (typeof index === 'undefined' || index === null) {
       return this.prefixHeightData.length - 1;
     } else {
@@ -64,4 +64,3 @@ class ArrayInfiniteComputer extends InfiniteComputer {
   }
 }
 
-module.exports = ArrayInfiniteComputer;

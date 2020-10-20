@@ -1,8 +1,8 @@
 /* @flow */
 
-var InfiniteComputer = require('./infiniteComputer.js');
+import InfiniteComputer from './infiniteComputer.js';
 
-class ConstantInfiniteComputer extends InfiniteComputer {
+export default class ConstantInfiniteComputer extends InfiniteComputer {
   getTotalScrollableHeight(): number {
     return this.heightData * this.numberOfChildren;
   }
@@ -32,4 +32,3 @@ class ConstantInfiniteComputer extends InfiniteComputer {
   }
 }
 
-module.exports = ConstantInfiniteComputer;
