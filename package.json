@@ -1,11 +1,11 @@
 {
   "name": "mephistowa-react-infinite",
-  "version": "1.14.0",
+  "version": "1.14.7",
   "description": "A browser-ready efficient scrolling container based on UITableView",
-  "main": "build/react-infinite.js",
+  "main": "build/src/react-infinite.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seatgeek/react-infinite"
+    "url": "https://github.com/mephisto83/react-infinite"
   },
   "keywords": [
     "react",
@@ -14,12 +14,12 @@
     "uitableview",
     "infinite"
   ],
-  "author": "Gareth Tan",
+  "author": "AJP/ Gareth Tan",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/seatgeek/react-infinite/issues"
+    "url": "https://github.com/mephisto83/react-infinite/issues"
   },
-  "browser": "build/react-infinite.js",
+  "browser": "build/src/react-infinite.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint --ext .jsx --ext .js ./src ./__tests__ ./pipeline ./cypress",
@@ -51,7 +51,7 @@
     "collectCoverage": true,
     "verbose": true
   },
-  "homepage": "https://github.com/seatgeek/react-infinite",
+  "homepage": "https://github.com/mephisto83/react-infinite",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",

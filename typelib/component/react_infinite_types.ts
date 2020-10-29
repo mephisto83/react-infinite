@@ -24,6 +24,7 @@ export type ReactInfiniteProvidedDefaultProps = {
   handleScroll: () => any,
 
   useWindowAsScrollContainer: boolean,
+  useParentContainer: boolean,
 
   onInfiniteLoad: () => any,
   loadingSpinnerDelegate: any,
@@ -77,7 +78,7 @@ export type ReactInfiniteComputedProps = {
   elementHeight: ElementHeight,
   containerHeight: number,
   useWindowAsScrollContainer?: boolean,
-
+  useParentContainer?: boolean,
   displayBottomUpwards: boolean,
 
   infiniteLoadBeginEdgeOffset?: number,
